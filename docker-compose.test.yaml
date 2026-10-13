@@ -1,0 +1,16 @@
+services:
+  postgres-test:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: kvitto_test
+      POSTGRES_USER: kvitto_test
+      POSTGRES_PASSWORD: kvitto_test
+    ports:
+      - "127.0.0.1:55433:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kvitto_test -d kvitto_test"]
+      interval: 1s
+      timeout: 5s
+      retries: 30

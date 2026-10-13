@@ -1,0 +1,6 @@
+Async Alembic migration environment for PostgreSQL.
+
+The database URL is built from validated DB_* environment variables.
+All app.models are registered in Base.metadata for autogeneration.
+Revision 0001 creates tariffs/payments and inserts the three initial tariffs.
+FastAPI applies pending revisions during startup, before serving requests.
